@@ -1,4 +1,4 @@
-name: Build PDFtoMD Desktop App
+name: Build Desktop App
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 env:
+  # This forces the GitHub runner to use Node 24 for all actions
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -31,14 +32,14 @@ jobs:
 
       - name: Build Executable
         run: |
-          pyinstaller --noconsole --onefile --collect-all customtkinter --collect-all pymupdf --name "PDFtoMD" main.py
-
-      - name: Check Dist Folder Contents (Debugging)
-        run: |
-          dir dist
+          # --collect-all pymupdf is critical to fix the error in image_ed0abd.png
+          pyinstaller --noconsole --onefile `
+            --collect-all customtkinter `
+            --collect-all pymupdf `
+            --name "PDF_to_Markdown" main.py
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: PDFtoMD-Windows
-          path: dist/PDFtoMD.exe
+          name: PDF-Converter-Windows
+          path: dist/PDF_to_Markdown.exe
