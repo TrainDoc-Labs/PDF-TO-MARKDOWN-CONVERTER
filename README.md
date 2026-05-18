@@ -1,6 +1,6 @@
-# PDF → Markdown Pro 📄➡️⬇️
+# PDFtoMD 📄➡️⬇️
 
-**PDF → Markdown Pro** is a powerful desktop utility designed to convert PDF documents into clean, high-quality Markdown format quickly and securely.
+**PDFtoMD** is a powerful desktop utility designed to convert PDF documents into clean, high-quality Markdown format quickly and securely.
 
 ---
 
